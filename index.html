@@ -1,38 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Autocomplete with JavaScript</title>
-  <link href="css/style.css" rel="stylesheet" />
-  <script type="Javascript" src="js/autocomplete.js"></script>	
-</head>
-<body>
+<!DOCTYPE html><html lang="en">
+ <head>	
+  <meta charset="UTF-8">	
+    <title>Shipping and Billing</title>	
+    <style>		
+        input{			
+          border:1px solid black;
+	}		
+        input:focus{
+	   background-color: #E6E6E6;		
+        }
+	fieldset{
+ 	   margin-bottom: 4%;
+	}	
+    </style>
+  </head>
+  <body>
+	<h1>JavaScript Homework</h1>	
+        <p>Add the JavaScript code needed to enable auto-complete on this form.  Whenever the checkbox is checked, the code should automatically copy the values from Shipping Name and Shipping Zip into the Billing Name and Billing Zip.  If the checkbox is unchecked, the Billing Name and Billing Zip should go blank.</p>
 
-<h1>JavaScript Homework</h1>
-	<p>Add the JavaScript code needed to enable auto-complete on this form.  Whenever the checkbox is checked, the code should automatically copy the values from Shipping Name and Shipping Zip into the Billing Name and Billing Zip.  If the checkbox is unchecked, the Billing Name and Billing Zip should go blank.</p>
+		<form>		
+        <fieldset>
+	  <legend>Shipping Information</legend>			  <label for ="shippingName">Name:</label>		  <input type = "text" name = "Name" id = "shippingName" required><br/>
 
-<form>
-		<fieldset>
-			<legend>Shipping Information</legend>
-			<label for ="shippingName">Name:</label>
-			<input type = "text" name = "shipName" id = "shippingName" required><br/>
-			<label for = "shippingZip">Zip code:</label>
-			<input type = "text" name = "shipZip" id = "shippingZip" pattern = "[0-9]{5}" required><br/>
-		</fieldset>
-		<input type="checkbox" id="same" name="same" onchange= "billingFunction()"/>
-		<label for = "same">Is the Billing Information the Same?</label>
-				
-		<fieldset> 
-			<legend>Billing Information</legend>
-			<label for ="billingName">Name:</label>
-			<input type = "text" name = "billName" id = "billingName" required><br/>
-			<label for = "billingZip">Zip code:</label>
-			<input type = "text" name = "billZip" id = "billingZip" pattern = "[0-9]{5}" required><br/>
-		</fieldset>
-			<input type = "submit" value = "Verify"/>
-		</form>
+	  <label for = "shippingzip">Zip code:</label>		  <input type = "text" name = "zip" id = "shippingZip" pattern = "[0-9]{5}" required><br/>
+        </fieldset>
+	<input type="checkbox" id="same" name="same" onchange= "billingFunction()"/>		
+        <label for = "same">Is the Billing Information the Same?</label>						
+        <fieldset>
+ 	  <legend>Billing Information</legend>			  <label for ="billingName">Name:</label>		  <input type = "text" name = "Name" id = "billingName" required><br/>
+	   
+          <label for = "billingzip">Zip code:</label>		  <input type = "text" name = "zip" id = "billingZip" pattern = "[0-9]{5}" required><br/>
+	</fieldset>
 
-  <script>
-  </script>
-</body>
+	<input type = "submit" value = "Verify"/>	
+    </form>
+	  <script type=JavaScript">
+				  let shippingName_field = document.getElementById('shippingName');
+let shippingZip_field = document.getElementById('shippingZip');
+let is_same_checkbox = document.getElementById('same');
+let billingName_field = document.getElementById('billingName');
+let billingZip_field = document.getElementById('billingZip');
+
+function billingFunction() {
+  if (is_same_checkbox.checked === true) {
+    //checked populate fields
+    if (shippingName_field.value !== '') {
+      billingName_field.value = shippingName_field.value;
+    }
+    if (shippingZip_field.value !== '') {
+      billingZip_field.value = shippingZip_field.value;
+    }
+  } else {
+    //unchecked clear fields
+    billingName_field.value = '';
+    billingZip_field.value = '';
+  }
+}				  
+				  </script>
+		  
+  </body>
 </html>
